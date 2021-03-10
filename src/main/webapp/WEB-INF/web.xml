@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!--set HelloServlet's request path ,also Replace XML with annotations-->
+<!--  <servlet>-->
+<!--    <servlet-name>HelloServlet</servlet-name>-->
+<!--    <servlet-class>com.TaoYangyang.week2.controller.HelloServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>HelloServlet</servlet-name>-->
+<!--    <url-pattern>/hello</url-pattern>-->
+<!--  </servlet-mapping>-->
+
 </web-app>
