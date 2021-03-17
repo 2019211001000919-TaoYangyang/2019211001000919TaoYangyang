@@ -35,7 +35,7 @@
                         New User Registration!
                     </div>
                 </h2>
-                <form class="ui large form" method="post" action="#" >
+                <form class="ui large form" method="post" action="${pageContext.request.contextPath}/register" >
                     <div class="ui stacked segment">
                         <div class="field">
                             <div class="ui left icon input">
@@ -59,13 +59,13 @@
                             <label> Gender</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="Gender" checked="" tabindex="0" class="hidden">
+                                    <input type="radio" name="Gender" checked="checked" value="1" tabindex="0" class="hidden">
                                     <label>Male</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="Gender" tabindex="0" class="hidden">
+                                    <input type="radio" name="Gender" value="0" tabindex="0" class="hidden">
                                     <label>Female</label>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="calendar check icon"></i>
-                                <input type="date" name="date">
+                                <input type="date" name="birth">
                             </div>
                         </div>
                         <button class="ui fluid large teal submit button">register</button>
@@ -118,8 +118,8 @@
                     prompt: 'please input correct email!'
                 }]
             },
-            date : {
-                identifier: 'date',
+            birth : {
+                identifier: 'birth',
                 rules: [{
                     type : 'empty',
                     prompt: 'please input date!'
