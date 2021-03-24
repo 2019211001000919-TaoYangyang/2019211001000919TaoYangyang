@@ -59,13 +59,13 @@
                             <label> Gender</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="Gender" checked="checked" value="1" tabindex="0" class="hidden">
+                                    <input type="radio" name="Gender" checked="checked" value="Male" tabindex="0" class="hidden">
                                     <label>Male</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="Gender" value="0" tabindex="0" class="hidden">
+                                    <input type="radio" name="Gender" value="Female" tabindex="0" class="hidden">
                                     <label>Female</label>
                                 </div>
                             </div>

@@ -18,4 +18,39 @@
 <!--    <url-pattern>/hello</url-pattern>-->
 <!--  </servlet-mapping>-->
 
+  <context-param>
+    <param-name>Driver</param-name>
+    <param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost:3306/productdb</param-value>
+  </context-param>
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
+<!--  <servlet>-->
+<!--    <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--    <servlet-class>com.TaoYangyang.week4.ConfigDemoServlet</servlet-class>-->
+<!--    <init-param>-->
+<!--      <param-name>name</param-name>-->
+<!--      <param-value>TaoYangyang</param-value>-->
+<!--    </init-param>-->
+<!--    <init-param>-->
+<!--      <param-name>studentId</param-name>-->
+<!--      <param-value>2019211001000919</param-value>-->
+<!--    </init-param>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--    <url-pattern>/config</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+
 </web-app>
