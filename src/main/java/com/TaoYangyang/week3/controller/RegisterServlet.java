@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
         String url = getServletConfig().getServletContext().getInitParameter("url");
         String username = getServletConfig().getServletContext().getInitParameter("username");
         String password = getServletConfig().getServletContext().getInitParameter("password");
-        Connection conn = jdbcUtil.getConnection(driver, url, username, password);
+        jdbcUtil.getConnection(driver, url, username, password);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

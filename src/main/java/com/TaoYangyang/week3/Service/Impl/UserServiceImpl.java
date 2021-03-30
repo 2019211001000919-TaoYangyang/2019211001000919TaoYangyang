@@ -9,15 +9,20 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
+    UserDao userDao = new UserDaoImpl();
+
     @Override
     public List<User> findAllUser() {
-        UserDao userDao = new UserDaoImpl();
         return userDao.findAllUser();
     }
 
     @Override
     public int addUser(User user) {
-        UserDao userDao = new UserDaoImpl();
         return userDao.addUser(user);
+    }
+
+    @Override
+    public User findUser(String username, String password) {
+        return userDao.findUser(username,password);
     }
 }

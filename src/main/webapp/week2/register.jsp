@@ -22,6 +22,7 @@
     }
 </style>
 <body>
+ <%@include file="../header.jsp"%>
 
 <br>
 <br>
@@ -86,6 +87,8 @@
         </div>
     </div>
 </div>
+
+ <%@include file="../footer.jsp"%>
 
 <script src="static/js/jquery-3.5.1.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>

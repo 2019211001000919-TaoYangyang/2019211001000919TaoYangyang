@@ -4,6 +4,7 @@ import com.TaoYangyang.week3.Dao.UserDao;
 import com.TaoYangyang.week3.Pojo.User;
 import com.TaoYangyang.week3.Utils.jdbcUtil;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.Connection;
@@ -32,6 +33,7 @@ public class UserDaoImpl implements UserDao {
         QueryRunner qr = new QueryRunner();
         String sql = "insert into usertable(username,password,email,gender,birth) values(?,?,?,?,?)";
         Connection conn = jdbcUtil.getConnection();
+        System.out.println(conn);
         try {
             return qr.update(conn,sql,new Object[]{user.getUsername(),user.getPassword(),user.getEmail(),user.getGender(),user.getBirth()});
         } catch (SQLException e) {
@@ -40,5 +42,21 @@ public class UserDaoImpl implements UserDao {
             jdbcUtil.colse(null,null,conn);
         }
         return 0;
+    }
+
+    @Override
+    public User findUser(String username, String password) {
+        QueryRunner qr = new QueryRunner();
+        String sql = "select * from usertable where username = '" + username + "' and password = '" + password + "'";
+        Connection conn = jdbcUtil.getConnection();
+        try {
+            User user = qr.query(conn, sql ,new BeanHandler<>(User.class));
+            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            jdbcUtil.colse(null,null,conn);
+        }
+        return null;
     }
 }
