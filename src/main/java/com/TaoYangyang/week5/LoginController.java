@@ -28,7 +28,11 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+
+        //The userservice of week3 is called here
         UserService userService = new UserServiceImpl();
+
+
         PrintWriter pw = response.getWriter();
         if ( userService.findUser(username,password) != null){
             pw.write("<h1>Login Success!</h1>");
