@@ -12,9 +12,15 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<a href="week2/register.jsp">register</a>
-<a href="week5/login.jsp">login</a>
+<form action="search" target="_blank" method="get">
+    <input type="text" name="txt" size="30"/>
+    <select name="search">
+        <option value="baidu">Baidu</option>
+        <option value="bing">Bing</option>
+        <option value="google">Google</option>
+    </select>
+    <input type="submit" value="Search">
+</form>
 <%@include file="footer.jsp"%>
-<a href="MyJsp.jsp"></a>
 </body>
 </html>

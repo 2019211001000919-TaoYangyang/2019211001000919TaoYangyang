@@ -40,28 +40,29 @@ public class RegisterServlet extends HttpServlet {
         if ( userService.addUser(user) == 0 ){
             pw.write("<h1>Insert error</h1>!");
         }else {
-            List<User> allUser = userService.findAllUser();
-            pw.write("<table border='1' style='text-align: center;'>");
-            pw.write("<td>number</td>");
-            pw.write("<td>username</td>");
-            pw.write("<td>password</td>");
-            pw.write("<td>email</td>");
-            pw.write("<td>gender</td>");
-            pw.write("<td>birth</td>");
-            pw.write("<td colspan = 2>operation</td>");
-            for (int i = 0; i < allUser.size(); i++) {
-                pw.write("<tr>");
-                pw.write("<td>"+ (i+1) + "</td>");
-                pw.write("<td>"+ allUser.get(i).getUsername() +"</td>");
-                pw.write("<td>"+ allUser.get(i).getPassword() +"</td>");
-                pw.write("<td>"+ allUser.get(i).getEmail() +"</td>");
-                pw.write("<td>"+ allUser.get(i).getGender() +"</td>");
-                pw.write("<td>"+ allUser.get(i).getBirth() +"</td>");
-                pw.write("<td><a href='#' >Delete</a></td>");
-                pw.write("<td><a href='#' >Update</a></td>");
-                pw.write("</tr>");
-            }
-            pw.write("</table>");
+//            List<User> allUser = userService.findAllUser();
+//            pw.write("<table border='1' style='text-align: center;'>");
+//            pw.write("<td>number</td>");
+//            pw.write("<td>username</td>");
+//            pw.write("<td>password</td>");
+//            pw.write("<td>email</td>");
+//            pw.write("<td>gender</td>");
+//            pw.write("<td>birth</td>");
+//            pw.write("<td colspan = 2>operation</td>");
+//            for (int i = 0; i < allUser.size(); i++) {
+//                pw.write("<tr>");
+//                pw.write("<td>"+ (i+1) + "</td>");
+//                pw.write("<td>"+ allUser.get(i).getUsername() +"</td>");
+//                pw.write("<td>"+ allUser.get(i).getPassword() +"</td>");
+//                pw.write("<td>"+ allUser.get(i).getEmail() +"</td>");
+//                pw.write("<td>"+ allUser.get(i).getGender() +"</td>");
+//                pw.write("<td>"+ allUser.get(i).getBirth() +"</td>");
+//                pw.write("<td><a href='#' >Delete</a></td>");
+//                pw.write("<td><a href='#' >Update</a></td>");
+//                pw.write("</tr>");
+//            }
+//            pw.write("</table>");
+            response.sendRedirect("login.jsp");
         }
 
     }

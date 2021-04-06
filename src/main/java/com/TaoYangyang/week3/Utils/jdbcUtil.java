@@ -1,7 +1,5 @@
 package com.TaoYangyang.week3.Utils;
 
-import org.apache.commons.dbutils.QueryRunner;
-
 import java.sql.*;
 
 public class jdbcUtil {

@@ -17,7 +17,7 @@
     username: <input type="text" name="username" required/><br>
     password: <input type="password" name="password" required/><br>
     <input type="submit" value="login"><br>
-    <span style="color: red;">${requestScope.msg}</span>
+    <span style="color: red;font-size: small">${requestScope.msg}</span>
 </form>
 <%@include file="../footer.jsp"%>
 </body>

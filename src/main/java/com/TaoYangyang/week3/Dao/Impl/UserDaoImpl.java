@@ -33,7 +33,6 @@ public class UserDaoImpl implements UserDao {
         QueryRunner qr = new QueryRunner();
         String sql = "insert into usertable(username,password,email,gender,birth) values(?,?,?,?,?)";
         Connection conn = jdbcUtil.getConnection();
-        System.out.println(conn);
         try {
             return qr.update(conn,sql,new Object[]{user.getUsername(),user.getPassword(),user.getEmail(),user.getGender(),user.getBirth()});
         } catch (SQLException e) {
