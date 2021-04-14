@@ -1,4 +1,4 @@
-package com.TaoYangyang.week3.Pojo;
+package com.TaoYangyang.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,5 @@ public class User {
     private String email;
     private String gender;
     private String birth;
-
-
 
 }

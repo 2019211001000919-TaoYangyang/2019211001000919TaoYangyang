@@ -1,9 +1,10 @@
 package com.TaoYangyang.week3.controller;
 
-import com.TaoYangyang.week3.Pojo.User;
-import com.TaoYangyang.week3.Service.Impl.UserServiceImpl;
-import com.TaoYangyang.week3.Service.UserService;
-import com.TaoYangyang.week3.Utils.jdbcUtil;
+import com.TaoYangyang.Dao.IUserDao;
+import com.TaoYangyang.Dao.Impl.IUserDaoImpl;
+import com.TaoYangyang.Model.User;
+import com.TaoYangyang.Utils.jdbcUtil;
+import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,20 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.List;
 
 @WebServlet(name = "RegisterServlet",value = "/register")
 public class RegisterServlet extends HttpServlet {
 
+    Connection con = null;
+
     @Override
     public void init() throws ServletException {
-        String driver = getServletConfig().getServletContext().getInitParameter("Driver");
-        String url = getServletConfig().getServletContext().getInitParameter("url");
-        String username = getServletConfig().getServletContext().getInitParameter("username");
-        String password = getServletConfig().getServletContext().getInitParameter("password");
-        jdbcUtil.getConnection(driver, url, username, password);
+//        String driver = getServletConfig().getServletContext().getInitParameter("Driver");
+//        String url = getServletConfig().getServletContext().getInitParameter("url");
+//        String username = getServletConfig().getServletContext().getInitParameter("username");
+//        String password = getServletConfig().getServletContext().getInitParameter("password");
+
+
+//        String driver = (String) getServletContext().getAttribute("driver");
+//        String url = (String) getServletContext().getAttribute("url");
+//        String username = (String) getServletContext().getAttribute("username");
+//        String password = (String) getServletContext().getAttribute("password");
+//        jdbcUtil.getConnection(driver, url, username, password);
+
+         con = (Connection) getServletContext().getAttribute("con");
     }
 
+
+    @SneakyThrows
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -36,8 +48,10 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(null, username, password, email, gender, birth);
 
         PrintWriter pw = response.getWriter();
-        UserService userService = new UserServiceImpl();
-        if ( userService.addUser(user) == 0 ){
+//        UserService userService = new UserServiceImpl();
+        IUserDao iUserDao = new IUserDaoImpl();
+
+        if ( iUserDao.saveUser(con,user) == 0 ){
             pw.write("<h1>Insert error</h1>!");
         }else {
 //            List<User> allUser = userService.findAllUser();
@@ -62,12 +76,12 @@ public class RegisterServlet extends HttpServlet {
 //                pw.write("</tr>");
 //            }
 //            pw.write("</table>");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath()+"/wee5/login.jsp");
         }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+       request.getRequestDispatcher("week2/register.jsp").forward(request,response);
     }
 }

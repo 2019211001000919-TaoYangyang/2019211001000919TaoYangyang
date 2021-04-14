@@ -41,7 +41,7 @@
     <tr height="20"><td align="right">
         <br> <a href="#">Logout</a>
         <br><a href="#">My Cart</a><br/>
-        <a href="week2/register.jsp">Register Here</a>
+        <a href="register">Register Here</a>
     </td></tr>
 </table>
 </body>

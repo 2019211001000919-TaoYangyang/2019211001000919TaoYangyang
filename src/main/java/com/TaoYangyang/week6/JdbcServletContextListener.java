@@ -1,6 +1,6 @@
 package com.TaoYangyang.week6;
 
-import com.TaoYangyang.week3.Utils.jdbcUtil;
+import com.TaoYangyang.Utils.jdbcUtil;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
+import java.sql.Connection;
 
-@WebListener()
-public class JdbcServletContextListener implements ServletContextListener,
-        HttpSessionListener, HttpSessionAttributeListener {
+@WebListener
+public class JdbcServletContextListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
 
     // Public constructor is required by servlet spec
     public JdbcServletContextListener() {
@@ -28,10 +28,12 @@ public class JdbcServletContextListener implements ServletContextListener,
          You can initialize servlet context related data here.
       */
         ServletContext c = sce.getServletContext();
-        c.setAttribute("driver",c.getInitParameter("Driver"));
-        c.setAttribute("url",c.getInitParameter("url"));
-        c.setAttribute("username",c.getInitParameter("username"));
-        c.setAttribute("password",c.getInitParameter("password"));
+//        c.setAttribute("driver",c.getInitParameter("Driver"));
+//        c.setAttribute("url",c.getInitParameter("url"));
+//        c.setAttribute("username",c.getInitParameter("username"));
+//        c.setAttribute("password",c.getInitParameter("password"));
+        Connection con = jdbcUtil.getConnection(c.getInitParameter("Driver"), c.getInitParameter("url"), c.getInitParameter("username"), c.getInitParameter("password"));
+        c.setAttribute("con",con);
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
@@ -39,7 +41,12 @@ public class JdbcServletContextListener implements ServletContextListener,
          (the Web application) is undeployed or 
          Application Server shuts down.
       */
-
+        ServletContext c = sce.getServletContext();
+//        c.removeAttribute("driver");
+//        c.removeAttribute("url");
+//        c.removeAttribute("username");
+//        c.removeAttribute("password");
+        c.removeAttribute("con");
     }
 
     // -------------------------------------------------------

@@ -1,4 +1,4 @@
-<%@ page import="com.TaoYangyang.week3.Pojo.User" %><%--
+<%@ page import="com.TaoYangyang.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: 南渡
   Date: 2021/4/6
@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-    <table border="1" style="text-align: center">
+    <table border="1"  style="text-align: center">
         <tr>
         <td>Username</td>
         <td>Password</td>
@@ -21,11 +21,6 @@
         <td>Birth Date</td>
         </tr>
         <tr>
-<%--            <td>${requestScope.user.username}</td>--%>
-<%--            <td>${requestScope.user.password}</td>--%>
-<%--            <td>${requestScope.user.email}</td>--%>
-<%--            <td>${requestScope.user.gender}</td>--%>
-<%--            <td>${requestScope.user.birth}</td>--%>
     <%
         User user = (User) request.getAttribute("user");
     %>

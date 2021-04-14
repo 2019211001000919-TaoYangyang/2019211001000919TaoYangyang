@@ -18,7 +18,7 @@ public class SearchServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         String txt =  URLEncoder.encode(request.getParameter("txt"), "UTF-8");
         String search = request.getParameter("search");
-        if (txt == null || txt.equals("")){
+        if (txt.equals("")){
             response.sendRedirect("index.jsp");
         }else {
             if (search.equals("baidu")){

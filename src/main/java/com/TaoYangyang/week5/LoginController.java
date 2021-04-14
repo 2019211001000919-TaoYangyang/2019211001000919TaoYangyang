@@ -1,9 +1,10 @@
 package com.TaoYangyang.week5;
 
-import com.TaoYangyang.week3.Pojo.User;
-import com.TaoYangyang.week3.Service.Impl.UserServiceImpl;
-import com.TaoYangyang.week3.Service.UserService;
-import com.TaoYangyang.week3.Utils.jdbcUtil;
+import com.TaoYangyang.Dao.IUserDao;
+import com.TaoYangyang.Dao.Impl.IUserDaoImpl;
+import com.TaoYangyang.Model.User;
+import com.TaoYangyang.Utils.jdbcUtil;
+import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 
 @WebServlet(name = "LoginController",value = "/login")
 public class LoginController extends HttpServlet {
+
+    Connection con = null;
 
     @Override
     public void init() throws ServletException {
@@ -25,14 +29,17 @@ public class LoginController extends HttpServlet {
 //        jdbcUtil.getConnection(driver, url, username, password);
 
 
-        String driver = (String) getServletContext().getAttribute("driver");
-        String url = (String) getServletContext().getAttribute("url");
-        String username = (String) getServletContext().getAttribute("username");
-        String password = (String) getServletContext().getAttribute("password");
-        jdbcUtil.getConnection(driver, url, username, password);
+//        String driver = (String) getServletContext().getAttribute("driver");
+//        String url = (String) getServletContext().getAttribute("url");
+//        String username = (String) getServletContext().getAttribute("username");
+//        String password = (String) getServletContext().getAttribute("password");
+//        jdbcUtil.getConnection(driver, url, username, password);
+
+        con = (Connection) getServletContext().getAttribute("con");
 
     }
 
+    @SneakyThrows
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -43,7 +50,7 @@ public class LoginController extends HttpServlet {
 
 
         PrintWriter pw = response.getWriter();
-        User user = userService.findUser(username, password);
+        User user = iUserDao.findByUsernamePassword(con,username, password);
         if ( user != null){
 
             request.setAttribute("user",user);
@@ -58,6 +65,6 @@ public class LoginController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        request.getRequestDispatcher( "WEB-INF/views/login.jsp").forward(request,response);
     }
 }
