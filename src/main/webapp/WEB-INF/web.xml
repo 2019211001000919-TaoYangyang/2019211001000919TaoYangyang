@@ -11,6 +11,8 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
+
+
   <!--set HelloServlet's request path ,also Replace XML with annotations-->
 <!--  <servlet>-->
 <!--    <servlet-name>HelloServlet</servlet-name>-->

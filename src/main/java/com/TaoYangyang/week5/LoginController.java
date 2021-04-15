@@ -54,13 +54,13 @@ public class LoginController extends HttpServlet {
         if ( user != null){
 
             request.setAttribute("user",user);
-            request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+            request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
 //            pw.write("<h1>Login Success!</h1>");
 //            pw.write("<h1>Welcome：" + username + "<h1>");
 
         }else {
             request.setAttribute("msg","username or password Error!");
-            request.getRequestDispatcher( "/week5/login.jsp").forward(request,response);
+            request.getRequestDispatcher( "WEB-INF/views/login.jsp").forward(request,response);
         }
     }
 
