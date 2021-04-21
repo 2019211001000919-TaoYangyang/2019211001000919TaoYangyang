@@ -30,12 +30,14 @@ public class IUserDaoImpl implements IUserDao {
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
+
         String sql = "update usertable set username = ?,password = ?, email = ?, gender = ?, birth = ? where id = ?";
         return qr.update(con,sql,new Object[]{user.getUsername(),user.getPassword(),user.getEmail(),user.getGender(),user.getBirth(),user.getId()});
     }
 
     @Override
     public User findById(Connection con, Integer id) throws SQLException {
+
         String sql = "select * from usertable where id =  " + id;
         return qr.query(con, sql ,new BeanHandler<>(User.class));
     }
