@@ -80,7 +80,7 @@ public class LoginController extends HttpServlet {
 //            pw.write("<h1>Welcome：" + username + "<h1>");
 
         }else {
-            request.setAttribute("msg","username or password Error!");
+            request.setAttribute("message","username or password Error!");
             request.getRequestDispatcher( "WEB-INF/views/login.jsp").forward(request,response);
         }
     }

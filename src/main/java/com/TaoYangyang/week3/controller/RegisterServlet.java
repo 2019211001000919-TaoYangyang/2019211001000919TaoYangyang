@@ -43,8 +43,8 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String gender = request.getParameter("Gender");
-        String birth = request.getParameter("birth");
+        String gender = request.getParameter("gender");
+        String birth = request.getParameter("birthdate");
         User user = new User(null, username, password, email, gender, birth);
 
         PrintWriter pw = response.getWriter();
@@ -76,12 +76,12 @@ public class RegisterServlet extends HttpServlet {
 //                pw.write("</tr>");
 //            }
 //            pw.write("</table>");
-            response.sendRedirect(request.getContextPath()+"/wee5/login.jsp");
+            request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
         }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       request.getRequestDispatcher("week2/register.jsp").forward(request,response);
+       request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 }
