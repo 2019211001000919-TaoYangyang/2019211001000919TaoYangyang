@@ -51,10 +51,10 @@ public class LoginController extends HttpServlet {
         User user = iUserDao.findByUsernamePassword(con,username, password);
         if ( user != null){
 
-            if (request.getParameter("remmberMe") != null && request.getParameter("remmberMe").equals("1")){
+            if (request.getParameter("remember") != null && request.getParameter("remember").equals("1")){
                 Cookie cUsername = new Cookie("cUsername", user.getUsername());
                 Cookie cPassword = new Cookie("cPassword", user.getPassword());
-                Cookie cRemmberMeVal = new Cookie("cRemmberMeVal", request.getParameter("remmberMe"));
+                Cookie cRemmberMeVal = new Cookie("cRememberMe", request.getParameter("remember"));
 
                 cUsername.setMaxAge(15*24*60*60);
                 cPassword.setMaxAge(15*24*60*60);
