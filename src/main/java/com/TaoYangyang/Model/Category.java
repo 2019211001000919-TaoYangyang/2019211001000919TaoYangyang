@@ -37,13 +37,16 @@ public class Category implements Serializable {
     }
 
     public static String findByCategoryId(Connection con,int categoryId){
+        System.out.println("findName");
         QueryRunner qr = new QueryRunner();
+        String categoryName = null;
         try {
-            Category query = qr.query(con, "select CategoryName from Category where CategoryID = " + categoryId, new BeanHandler<>(Category.class));
-            return query.getCategoryName();
+            String sql = "select CategoryName from Category where CategoryID = " + categoryId;
+            Category query = qr.query(con, sql, new BeanHandler<>(Category.class));
+            categoryName = query.getCategoryName();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return categoryName;
     }
 }
