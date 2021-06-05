@@ -57,4 +57,13 @@
 <!--    <url-pattern>/config</url-pattern>-->
 <!--  </servlet-mapping>-->
 
+  <filter>
+    <filter-name>TyyFilter</filter-name>
+    <filter-class>com.lab2.TyyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TyyFilter</filter-name>
+    <url-pattern>/lab2/welcome.jsp</url-pattern>
+  </filter-mapping>
+
 </web-app>

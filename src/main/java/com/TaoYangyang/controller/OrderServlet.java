@@ -19,11 +19,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import lombok.extern.log4j.Log4j;
+import org.apache.log4j.Logger;
 /**
  * @author tyy
  * @version 1.0
  * @date 2021/6/2 13:34
  */
+@Log4j
 @WebServlet(name = "OrderServlet ",value = "/order")
 public class OrderServlet extends HttpServlet {
     Connection con = null;
@@ -32,6 +35,13 @@ public class OrderServlet extends HttpServlet {
     public void init(){
         con = (Connection) getServletContext().getAttribute("con");
     }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        log.info("destroy");
+    }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int customerId = request.getParameter("customerId") != null ? Integer.parseInt(request.getParameter("customerId")) : 0;

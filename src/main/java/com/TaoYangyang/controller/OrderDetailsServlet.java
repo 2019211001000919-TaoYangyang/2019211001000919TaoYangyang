@@ -30,6 +30,12 @@ public class OrderDetailsServlet extends HttpServlet {
         con = (Connection) getServletContext().getAttribute("con");
     }
 
+    @Override
+    public void destroy() {
+        super.destroy();
+        log.info("destroy");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
